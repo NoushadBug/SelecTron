@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+
+  "name": "SelecTron",
+  "description": "Highlight, copy and/or run Google search for the selected text in a page. Extra options included for easier browsing experience.",
+  "version": "1.0.0",
+  "options_page": "options.html",
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "browser_action": {
+    "default_icon": "img/icon128.png",
+    "default_popup": "select.html"
+  },
+  "web_accessible_resources": [
+      "img/*.png"
+    ],
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "clipboardWrite"
+  ],
+  "background": {
+      "scripts": ["js/background.js"],
+      "css": ["css/font-awesome.css"]
+    },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["css/font-awesome.css","css/popover.min.css"],
+      "js": ["js/vendor/jquery.min.js", "js/vendor/popover.min.js", "js/select.js", "js/vendor/jquery.mark.min.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}

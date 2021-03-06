@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>SelecTron</title>
+  <script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+  <script type="text/javascript" src="js/options.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/options.css" text="text/css">
+
+</head>
+
+<style>
+  .bodyStyle{
+    background-color: #f77000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23ff841e' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23ff9843' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%23ffad69' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23ffc18e' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23ffd6b4' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23ffead9' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23ffffff' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .myAlert{
+    color: white;
+    background-color: #ff8f5f;
+    border-color: #ff8f5f;
+    text-align: center;
+  }
+</style>
+
+<body class="bodyStyle">
+
+    <div id="showAlert" class="myAlert">
+    </div>
+    <div class="container">
+     <div class="row">
+      <form class="col-md-6">
+        <h3>When text is selected?</h3>
+        
+        <div class="radio">
+          <label>
+            <input type="radio" name="generalOptionVal" id="clipboardOnly" value="clipboardOnly"/>
+            Copy to clipboard only.
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="generalOptionVal" id="searchOnly" value="searchOnly"/>
+            Run a Google search only.
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="generalOptionVal" id="translateOnlyOnly" value="translateOnly"/>
+            Run Translation only.
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="generalOptionVal" id="copySearchOnly" value="copySearchOnly"/>
+            Copy to clipboard, Translation <strong> and </strong> run Google search.
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="generalOptionVal" id="optionOnly" value="optionOnly" checked/>
+            Not sure. Show me an option box every time text is selected.
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="generalOptionVal" id="pause" value="pause"/>
+            Meh. Just pause it all for now.
+          </label>
+        </div>
+
+        <hr>
+
+        <h3> Highlight other selected text </h3>
+        <div class="radio">
+          <label>
+            <input type="radio" name="highlightVal" id="highlightText" value="highlightText"/>
+            Highlight similar text selected in the document.
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="highlightVal" id="dontHighlightText" value="dontHighlightText" checked/>
+            Do not highlight similar text selected.
+          </label>
+        </div>
+        <hr>
+        <h3> Additional Options </h3>
+
+        <strong>When opening a new tab for search?</strong>
+        <div class="radio">
+          <label>
+            <input type="radio" name="addOptionVal" id="dontChangeTab" value="dontChangeTab"/>
+            Keep the current tab active.
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="addOptionVal" id="changeTab" value="changeTab" checked/>
+            Right away take me to the new tab
+          </label>
+        </div>
+
+        <strong>When selecting text from a text/input box?</strong>
+        <div class="radio">
+          <label>
+            <input type="radio" name="inputBoxSelect" id="dontSelectText" value="dontSelectText" />
+            Dont run any SelecTron operations.
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="inputBoxSelect" id="selectText" value="selectText"/>
+            Run the default select option (above).
+          </label>
+        </div>
+
+        <div class="form-group">
+          <a id="generalOptionSave" class="btn btn-default">Update Settings</a>
+        </div>
+      </form>
+      <div class="col-md-6 text-center">
+        <img src="img/icon128.png" alt="">
+        <h2 style="
+    color: #fff;
+    margin: 0;
+    ">SelecTron</h2>
+    <p><span id="versionNum" style="color: maroon;">v1.0.0</span></p>
+    <small style="color: crimson;"><i>[inspired from <a href="https://github.com/shayonj/SelectGo">SelectGo</a></i>]</small>
+      </div>
+     </div>
+      
+
+      <footer class="footer text-center col-md-12">
+        <p>&copy; SelecTron | Developed by <a href="http://github.com/noushadBug" target="_blank">Noushad</a> | <a href="mailto:noushadbhuiyan7@gmail.com">Comments/Feedback</a> | <small><span id="versionNum"></span></small> </p>
+      <img src="https://raw.githubusercontent.com/NoushadBug/NoushadBug/master/noushadBhuiyanLogo.png" alt="noushadBug">
+      </footer>
+
+    </div><!-- /.container -->
+
+  </body>
+  </html>
