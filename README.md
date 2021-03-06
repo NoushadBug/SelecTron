@@ -1,4 +1,4 @@
-![Image of SelecTron](https://github.com/shayonj/SelecTron/blob/master/img/icon128.png?raw=true)
+![Image of SelecTron](https://github.com/NoushadBug/SelecTron/blob/master/img/iconu.png?raw=true)
 
 # SelecTron
 Chrome extension that allows a user to automatically copy and run a google search for the selected text. Additional options and features include: 
