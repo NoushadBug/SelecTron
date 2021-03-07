@@ -27,7 +27,7 @@ function addAlert() {
 
 // Update select status to local storage API
 function generalOptionChanges() {
-  var selectStatus = $("input[class='generalOptionVal']:checked").val();
+  var selectStatus = $("input[name='generalOptionVal']:checked").val();
   var tabStatus = $("input[name='addOptionVal']:checked").val();
   var inputStatus = $("input[name='inputBoxSelect']:checked").val();
   var highlightStatus = $("input[name='highlightVal']:checked").val();

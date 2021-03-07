@@ -77,7 +77,9 @@ function runSearch(t, tabStatus) {
   var text = t.replace(/ /g,"+");
   var newURL = "https://www.google.com/search?q=" + text;
   if(tabStatus == "dontChangeTab"){
-    chrome.tabs.create({url: newURL, selected: false}, function(tab) {});
+     chrome.tabs.create({url: newURL, active: false}, function(tab) {});
+    // chrome.windows.create({'url': newURL, 'type': 'popup'}, function(window) {
+    // });
   }else {
     chrome.tabs.create({url: newURL}, function(tab) {});
   }
@@ -86,7 +88,7 @@ function runSearch(t, tabStatus) {
 function TranslatetoBn(t, tabStatus) {
 
   var text = t.replace(/ /g,"%20");
-  var newURL = "https://translate.google.com/contribute?sl=en&tl=bn&text=" + text;
+  var newURL = "https://translate.google.com/?sl=auto&tl=bn&text="+text+"&op=translate";
   chrome.windows.create({'url': newURL, 'type': 'popup'}, function(window) {
   });
 
