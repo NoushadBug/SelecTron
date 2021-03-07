@@ -31,6 +31,7 @@ SelecTron.Selector.mouseup = function(e){
         }
       }
 
+      console.log(obj.selectStatus)
       // Then send the status and text to background
       chrome.runtime.sendMessage({
         status: obj.selectStatus,
@@ -79,7 +80,7 @@ SelecTron.Selector.mouseup = function(e){
             // Trigger Translate action
             $("#optionBoxTranslate"+id).click(function() {
               chrome.runtime.sendMessage({
-                status: {"select": "translateOnly", "tab": obj.selectStatus["tab"]},
+                status: {"select": "translateOnly", "tab": obj.selectStatus["tab"], "language":obj.selectStatus["language"]},
                 text: text
               });
               disablePopup(id);
@@ -123,7 +124,7 @@ SelecTron.Selector.mouseup = function(e){
     chrome.storage.sync.get('selectStatus', function (obj) {
       // Set status to pause on click
       $("#pause").click(function() {
-        chrome.storage.sync.set({ 'selectStatus': {"select": "pause", "tab": obj.selectStatus["tab"], "input": obj.selectStatus["input"], "highlight": obj.selectStatus["highlight"]} }, function() {
+        chrome.storage.sync.set({ 'selectStatus': {"select": "pause", "tab": obj.selectStatus["tab"], "input": obj.selectStatus["input"], "highlight": obj.selectStatus["highlight"]}, "language": obj.selectStatus["language"] }, function() {
           console.log("SelecTron Setup done.")
         });
         window.close();

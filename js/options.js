@@ -3,11 +3,14 @@ chrome.storage.sync.get('selectStatus', function (obj) {
   var tabStatus = obj.selectStatus["tab"];
   var inputBoxStatus = obj.selectStatus["input"];
   var highlightStatus = obj.selectStatus["highlight"];
+  var languageStatus = obj.selectStatus["language"];
 
-  $("#"+selectStatus).prop( "checked", true );
-  $("#"+tabStatus).prop( "checked", true );
-  $("#"+inputBoxStatus).prop( "checked", true );
-  $("#"+highlightStatus).prop( "checked", true );
+  $("#"+selectStatus).prop( "selected", true );
+  $("#"+tabStatus).prop( "selected", true );
+  $("#"+inputBoxStatus).prop( "selected", true );
+  $("#"+highlightStatus).prop( "selected", true );
+  $("#"+languageStatus).prop( "selected", true );
+  //$("select[name='translationSelect']").val(languageStatus);
   console.log(obj.selectStatus)
 });
 
@@ -27,12 +30,13 @@ function addAlert() {
 
 // Update select status to local storage API
 function generalOptionChanges() {
-  var selectStatus = $("input[name='generalOptionVal']:checked").val();
-  var tabStatus = $("input[name='addOptionVal']:checked").val();
-  var inputStatus = $("input[name='inputBoxSelect']:checked").val();
-  var highlightStatus = $("input[name='highlightVal']:checked").val();
+  var selectStatus = $("select[name='generalOptionVal']").val();
+  var tabStatus = $("select[name='addOptionVal']").val();
+  var inputStatus = $("select[name='inputBoxSelect']").val();
+  var highlightStatus = $("select[name='highlightVal']").val();
+  var languageStatus = $("select[name='translationSelect']").val();
 
-  chrome.storage.sync.set({'selectStatus': {"select": selectStatus, "tab": tabStatus, "input": inputStatus, "highlight": highlightStatus}}, function() {
+  chrome.storage.sync.set({'selectStatus': {"select": selectStatus, "tab": tabStatus, "input": inputStatus, "highlight": highlightStatus, "language": languageStatus}}, function() {
     addAlert();
   });
 }

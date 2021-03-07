@@ -16,30 +16,40 @@ selectStatus :
   highlight :
     * highlightText
     * dontHighlightText
+  language :
+    * all languages codes dropdown
 */
+
 
 chrome.storage.sync.get('selectStatus', function (obj) {
   if(obj.selectStatus == null || obj.selectStatus && obj.selectStatus["select"] == null){
-    chrome.storage.sync.set({ 'selectStatus': {"select": "optionOnly", "tab": "changeTab", "input": "dontSelectText", "highlight": "dontHighlightText"} }, function() {
+    chrome.storage.sync.set({ 'selectStatus': {"select": "optionOnly", "tab": "changeTab", "input": "dontSelectText", "highlight": "dontHighlightText", "language": "bn"} }, function() {
       console.log("SelecTron Setup done.")
     });
   }
   if(obj.selectStatus == null || obj.selectStatus && obj.selectStatus["input"] == null){
-    chrome.storage.sync.set({ 'selectStatus': {"select": obj.selectStatus["select"], "tab": obj.selectStatus["tab"], "input": "dontSelectText", "highlight": obj.selectStatus["highlight"]} }, function() {
+    chrome.storage.sync.set({ 'selectStatus': {"select": obj.selectStatus["select"], "tab": obj.selectStatus["tab"], "input": "dontSelectText", "highlight": obj.selectStatus["highlight"], "language": obj.selectStatus["language"]} }, function() {
       console.log("SelecTron Setup done.")
     });
   }
   if(obj.selectStatus == null || obj.selectStatus && obj.selectStatus["highlight"] == null){
-    chrome.storage.sync.set({ 'selectStatus': {"select": obj.selectStatus["select"], "tab": obj.selectStatus["tab"], "input": obj.selectStatus["input"], "highlight": "dontHighlightText"} }, function() {
+    chrome.storage.sync.set({ 'selectStatus': {"select": obj.selectStatus["select"], "tab": obj.selectStatus["tab"], "input": obj.selectStatus["input"], "highlight": "dontHighlightText", "language": obj.selectStatus["language"]}}, function() {
       console.log("SelecTron Setup done.")
     });
   }
+  if(obj.selectStatus == null || obj.selectStatus && obj.selectStatus["language"] == null){
+    chrome.storage.sync.set({ 'selectStatus': {"select": obj.selectStatus["select"], "tab": obj.selectStatus["tab"], "input": obj.selectStatus["input"],"highlight": obj.selectStatus["highlight"], "language": "bn"} }, function() {
+      console.log("SelecTron Setup done.")
+    });
+  }
+
 });
 
 chrome.runtime.onMessage.addListener(function(request) {
   var selectStatus = request.status["select"];
   var tabStatus = request.status["tab"]
   var highlightStatus = request.status["highlight"]
+  var languageStatus = request.status["language"]
   var text = request.text;
   // Run actions based on current status set in storage
   if(selectStatus == "clipboardOnly") {
@@ -47,11 +57,11 @@ chrome.runtime.onMessage.addListener(function(request) {
   } else if(selectStatus == "searchOnly") {
     runSearch(text, tabStatus);
   }else if(selectStatus == "translateOnly") {
-    TranslatetoBn(text, tabStatus);
+    Translator(text, tabStatus,languageStatus);
   } else if(selectStatus == "copySearchOnly") {
     copyText(text);
     runSearch(text, tabStatus);
-    TranslatetoBn(text, tabStatus);
+    Translator(text, tabStatus,languageStatus);
   } else if(selectStatus == "optionOnly"){
     showOptionBox(text);
   }
@@ -85,10 +95,9 @@ function runSearch(t, tabStatus) {
   }
 }
 
-function TranslatetoBn(t, tabStatus) {
-
+function Translator(t, tabStatus,lang) {
   var text = t.replace(/ /g,"%20");
-  var newURL = "https://translate.google.com/?sl=auto&tl=bn&text="+text+"&op=translate";
+  var newURL = "https://translate.google.com/?sl=auto&tl="+lang+"&text="+text+"&op=translate";
   chrome.windows.create({'url': newURL, 'type': 'popup'}, function(window) {
   });
 

@@ -11,6 +11,19 @@
 </head>
 
 <style>
+  .btn-nsd{
+    margin-top: 3em;
+    background: #79495a;
+    color: white;
+    width: 80%;
+  }
+  .btn-nsd:hover{
+    color:white;
+    background: #534047;
+  }
+  .selectStyle{
+    color: #333;font-weight: 600;background-color: #fbce92;width: 80%;
+  }
   .bodyStyle{
     background-color: #f77000;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23ff841e' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23ff9843' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%23ffad69' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23ffc18e' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23ffd6b4' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23ffead9' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23ffffff' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
@@ -33,8 +46,15 @@
      <div class="row">
       <form class="col-md-6">
         <h3>When text is selected?</h3>
-        
-        <div class="radio">
+        <select class="form-control selectStyle" name="generalOptionVal" >
+          <option class="generalOptionVal" id="clipboardOnly" value="clipboardOnly">Copy to clipboard only.</option>
+          <option class="generalOptionVal" id="searchOnly" value="searchOnly">Run a Google search only.</option>
+          <option class="generalOptionVal" id="translateOnly" value="translateOnly">Run Translation only.</option>
+          <option class="generalOptionVal" id="copySearchOnly" value="copySearchOnly">Copy to clipboard, Translation <strong> and </strong> run Google search.</option>
+          <option class="generalOptionVal" id="optionOnly" value="optionOnly" >Not sure. Show me an option box every time text is selected.</option>
+          <option class="generalOptionVal" id="pause" value="pause">Meh. Just pause it all for now.</option>
+      </select>
+        <!-- <div class="radio">
           <label>
             <input type="radio" name="generalOptionVal" id="clipboardOnly" value="clipboardOnly"/>
             Copy to clipboard only.
@@ -48,7 +68,7 @@
           </label>
         </div>
 
-        <div class="radio">
+        <div class="radio"> 
           <label>
             <input type="radio" name="generalOptionVal" id="translateOnly" value="translateOnly"/>
             Run Translation only.
@@ -74,12 +94,16 @@
             <input type="radio" name="generalOptionVal" id="pause" value="pause"/>
             Meh. Just pause it all for now.
           </label>
-        </div>
+        </div> -->
 
         <hr>
 
         <h3> Highlight other selected text </h3>
-        <div class="radio">
+        <select class="form-control selectStyle" name="highlightVal">
+          <option class="highlightVal" id="highlightText" value="highlightText">Highlight similar text selected in the document.</option>
+          <option class="highlightVal" id="dontHighlightText" value="dontHighlightText" >Do not highlight similar text selected.</option>
+        </select>
+        <!-- <div class="radio">
           <label>
             <input type="radio" name="highlightVal" id="highlightText" value="highlightText"/>
             Highlight similar text selected in the document.
@@ -91,12 +115,18 @@
             <input type="radio" name="highlightVal" id="dontHighlightText" value="dontHighlightText" checked/>
             Do not highlight similar text selected.
           </label>
-        </div>
-        <hr>
-        <h3> Additional Options </h3>
+        </div> -->
 
+        <hr>
+
+        <h3> Additional Options </h3>
         <strong>When opening a new tab for search?</strong>
-        <div class="radio">
+        <br>
+        <select class="form-control selectStyle" name="addOptionVal">
+          <option class="addOptionVal" id="dontChangeTab" value="dontChangeTab">Keep the current tab active.</option>
+          <option class="addOptionVal" id="changeTab" value="changeTab" >Right away take me to the new tab</option>
+        </select>
+        <!-- <div class="radio">
           <label>
             <input type="radio" name="addOptionVal" id="dontChangeTab" value="dontChangeTab"/>
             Keep the current tab active.
@@ -108,10 +138,15 @@
             <input type="radio" name="addOptionVal" id="changeTab" value="changeTab" checked/>
             Right away take me to the new tab
           </label>
-        </div>
-
+        </div> -->
+        <br>
         <strong>When selecting text from a text/input box?</strong>
-        <div class="radio">
+        <br>
+        <select class="form-control selectStyle" name="inputBoxSelect">
+          <option class="inputBoxSelect" id="dontSelectText" value="dontSelectText" >Dont run any SelecTron operations.</option>
+          <option class="inputBoxSelect" id="selectText" value="selectText">Run the default select option (above).</option>
+        </select>
+        <!-- <div class="radio">
           <label>
             <input type="radio" name="inputBoxSelect" id="dontSelectText" value="dontSelectText" />
             Dont run any SelecTron operations.
@@ -123,10 +158,124 @@
             <input type="radio" name="inputBoxSelect" id="selectText" value="selectText"/>
             Run the default select option (above).
           </label>
-        </div>
+        </div> -->
+        <hr>
+        <h3 for="cars">Choose a language to translate:</h3>
+      <select class="form-control selectStyle" name="translationSelect">
+        <option id='af' value="af">Afrikaans</option>
+        <option id='sq' value="sq">Albanian</option>
+        <option id='am' value="am">Amharic</option>
+        <option id='ar' value="ar">Arabic</option>
+        <option id='hy' value="hy">Armenian</option>
+        <option id='az'value="az">Azerbaijani</option>
+        <option id='eu'value="eu">Basque</option>
+        <option id='be'value="be">Belarusian</option>
+        <option id='bn'value="bn">Bengali</option>
+        <option id='bs'value="bs">Bosnian</option>
+        <option id='bg'value="bg">Bulgarian</option>
+        <option id='ca'value="ca">Catalan</option>
+        <option id='ceb'value="ceb">Cebuano</option>
+        <option id='zh'value="zh">Chinese (Simplified)</option>
+        <option id='zh-TW'value="zh-TW">Chinese (Traditional)</option>
+        <option id='co'value="co">Corsican</option>
+        <option id='hr'value="hr">Croatian</option>
+        <option id='cs'value="cs">Czech</option>
+        <option id='da'value="da">Danish</option>
+        <option id='nl'value="nl">Dutch</option>
+        <option id='en'value="en">English</option>
+        <option id='eo'value="eo">Esperanto</option>
+        <option id='et'value="et">Estonian</option>
+        <option id='fi'value="fi">Finnish</option>
+        <option id='fr'value="fr">French</option>
+        <option id='fy'value="fy">Frisian</option>
+        <option id='gl'value="gl">Galician</option>
+        <option id='ka'value="ka">Georgian</option>
+        <option id='de'value="de">German</option>
+        <option id='el'value="el">Greek</option>
+        <option id='gu'value="gu">Gujarati</option>
+        <option id='ht'value="ht">Haitian Creole</option>
+        <option id='ha'value="ha">Hausa</option>
+        <option id='haw'value="haw">Hawaiian</option>
+        <option id='he'value="he">Hebrew</option>
+        <option id='hi'value="hi">Hindi</option>
+        <option id='hmn'value="hmn">Hmong</option>
+        <option id='hu'value="hu">Hungarian</option>
+        <option id='is'value="is">Icelandic</option>
+        <option id='ig'value="ig">Igbo</option>
+        <option id='id'value="id">Indonesian</option>
+        <option id='ga'value="ga">Irish</option>
+        <option id='it'value="it">Italian</option>
+        <option id='ja'value="ja">Japanese</option>
+        <option id='jv'value="jv">Javanese</option>
+        <option id='kn'value="kn">Kannada</option>
+        <option id='kk'value="kk">Kazakh</option>
+        <option id='km'value="km">Khmer</option>
+        <option id='rw'value="rw">Kinyarwanda</option>
+        <option id='ko'value="ko">Korean</option>
+        <option id='ku'value="ku">Kurdish</option>
+        <option id='ky'value="ky">Kyrgyz</option>
+        <option id='lo'value="lo">Lao</option>
+        <option id='la'value="la">Latin</option>
+        <option id='lv'value="lv">Latvian</option>
+        <option id='lt'value="lt">Lithuanian</option>
+        <option id='lb'value="lb">Luxembourgish</option>
+        <option id='mk'value="mk">Macedonian</option>
+        <option id='mg'value="mg">Malagasy</option>
+        <option id='ms'value="ms">Malay</option>
+        <option id='ml'value="ml">Malayalam</option>
+        <option id='mt'value="mt">Maltese</option>
+        <option id='mi'value="mi">Maori</option>
+        <option id='mr'value="mr">Marathi</option>
+        <option id='mn'value="mn">Mongolian</option>
+        <option id='my'value="my">Myanmar (Burmese)</option>
+        <option id='ne'value="ne">Nepali</option>
+        <option id='no'value="no">Norwegian</option>
+        <option id='ny'value="ny">Nyanja (Chichewa)</option>
+        <option id='or'value="or">Odia (Oriya)</option>
+        <option id='ps'value="ps">Pashto</option>
+        <option id='fa'value="fa">Persian</option>
+        <option id='pl'value="pl">Polish</option>
+        <option id='pt'value="pt">Portuguese (Portugal, Brazil)</option>
+        <option id='pa'value="pa">Punjabi</option>
+        <option id='ro'value="ro">Romanian</option>
+        <option id='ru'value="ru">Russian</option>
+        <option id='sm'value="sm">Samoan</option>
+        <option id='gd'value="gd">Scots Gaelic</option>
+        <option id='sr'value="sr">Serbian</option>
+        <option id='st'value="st">Sesotho</option>
+        <option id='sn'value="sn">Shona</option>
+        <option id='sd'value="sd">Sindhi</option>
+        <option id='si'value="si">Sinhala (Sinhalese)</option>
+        <option id='sk'value="sk">Slovak</option>
+        <option id='sl'value="sl">Slovenian</option>
+        <option id='so'value="so">Somali</option>
+        <option id='es'value="es">Spanish</option>
+        <option id='su'value="su">Sundanese</option>
+        <option id='sw'value="sw">Swahili</option>
+        <option id='sv'value="sv">Swedish</option>
+        <option id='tl'value="tl">Tagalog (Filipino)</option>
+        <option id='tg'value="tg">Tajik</option>
+        <option id='ta'value="ta">Tamil</option>
+        <option id='tt'value="tt">Tatar</option>
+        <option id='te'value="te">Telugu</option>
+        <option id='th'value="th">Thai</option>
+        <option id='tr'value="tr">Turkish</option>
+        <option id='tk'value="tk">Turkmen</option>
+        <option id='uk'value="uk">Ukrainian</option>
+        <option id='ur'value="ur">Urdu</option>
+        <option id='ug'value="ug">Uyghur</option>
+        <option id='uz'value="uz">Uzbek</option>
+        <option id='vi'value="vi">Vietnamese</option>
+        <option id='cy'value="cy">Welsh</option>
+        <option id='xh'value="xh">Xhosa</option>
+        <option id='yi'value="yi">Yiddish</option>
+        <option id='yo'value="yo">Yoruba</option>
+        <option id='zu'value="zu">Zulu</option>
+
+      </select>
 
         <div class="form-group">
-          <a id="generalOptionSave" class="btn btn-default">Update Settings</a>
+          <a id="generalOptionSave" class="btn btn-nsd">Update Settings</a>
         </div>
       </form>
       <div class="col-md-6 text-center">
@@ -137,15 +286,12 @@
     ">SelecTron</h2>
     <p><span id="versionNum" style="color: maroon;">v1.0.0</span></p>
     <small style="color: crimson;"><i>[inspired from <a href="https://github.com/shayonj/SelectGo">SelectGo</a>]</i></small>
+    <div class="my-6">
+      <br>
+      <label for="img" style="margin-top: 4em;">powered by</label>
+      <br>
+      <img src="https://raw.githubusercontent.com/softniquebd/softniquebd.github.io/master/images/softnique-footer.png" alt="" style="height: 200px;">
 
-    <div class="my-5">
-      <h3 for="cars">Choose a language to translate:</h3>
-      <select class="form-control form-control-sm" name="cars" id="cars" style="color: #333;font-weight: 600;background-color: #ffb656;margin: auto;width: 80%;">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
     </div>
 
       </div>
