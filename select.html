@@ -4,6 +4,7 @@
   <title>SelecTron</title>  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link href="css/font-awesome.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css" text="text/css">
   <script type="text/javascript" src="js/vendor/jquery.min.js"></script>
   <script type="text/javascript" src="js/vendor/jquery.mark.min.js"></script>
@@ -12,13 +13,24 @@
 </head>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-header">
-      <p class="navbar-brand" href="#">SelecTron</p>
+    <div class="navbar-header" style="
+    background-image: url(img/icon128.png);
+    background-repeat: no-repeat;
+    background-size: 3.7pc;
+">
+      <p class="navbar-brand" href="#" style="
+        color: #fff;
+    font-size: 27px;
+    float: right;
+    letter-spacing: 4px;
+    margin: auto;
+">SelecTron</p>
+      
     </div>
   </nav>
-  <div class="container-fluid">
-    <a href="options.html" class="btn btn-default btn-block" target="_blank">Options</a>
-    <a id="pause" class="btn btn-default btn-block" target="_blank">Pause SelecTron</a>
+  <div class="container-fluid" style="text-align: center;">
+    <a href="options.html" class="btn btn-default" target="_blank"><i class="fa fa-cog" style="margin-right: 1em;"></i>Options</a>
+    <a id="pause" class="btn btn-default " target="_blank"><i class="fa fa-pause"  style="margin-right: 1em;"></i>Pause SelecTron</a>
   </div>
 </body>
 </html>

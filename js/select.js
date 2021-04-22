@@ -52,8 +52,8 @@ SelecTron.Selector.mouseup = function(e){
               //Insert node for the pop up
               range.insertNode(newNode);
               // Create unique content for each popover
-              var content = '<div style="cursor:pointer;color:white;text-align:center;"><img id="optionBoxCopy'+id+'"  src="'+chrome.extension.getURL('img/copy.png')+'"/> <img id="optionBoxSearch'+id+'" src="'+chrome.extension.getURL('img/link.png')+'"/> <img id="optionBoxTranslate'+id+'" src="'+chrome.extension.getURL('img/translate.png')+'"/>';
-              $('#'+id).webuiPopover({placement:'auto',content: content, width: 100, trigger: "click"});
+              var content = '<div style="cursor:pointer;color:white;text-align:center;"><img id="optionBoxCopy'+id+'"  src="'+chrome.extension.getURL('img/copy.png')+'"/> <img id="optionBoxSearch'+id+'" src="'+chrome.extension.getURL('img/link.png')+'"/> <img id="optionBoxTranslate'+id+'" src="'+chrome.extension.getURL('img/translate.png')+'"/><img id="optionBoxLink'+id+'" src="'+chrome.extension.getURL('img/link2.png')+'"/></div>';
+              $('#'+id).webuiPopover({placement:'auto',content: content, width: 118, trigger: "click"});
             }
 
             // Fire up the popover
@@ -81,6 +81,15 @@ SelecTron.Selector.mouseup = function(e){
             $("#optionBoxTranslate"+id).click(function() {
               chrome.runtime.sendMessage({
                 status: {"select": "translateOnly", "tab": obj.selectStatus["tab"], "language":obj.selectStatus["language"]},
+                text: text
+              });
+              disablePopup(id);
+            });
+
+            // Trigger Open Link action
+            $("#optionBoxLink"+id).click(function() {
+              chrome.runtime.sendMessage({
+                status: {"select": "linkOnly", "tab": obj.selectStatus["tab"], "language":obj.selectStatus["language"]},
                 text: text
               });
               disablePopup(id);

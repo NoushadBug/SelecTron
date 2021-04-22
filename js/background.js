@@ -55,15 +55,16 @@ chrome.runtime.onMessage.addListener(function(request) {
   if(selectStatus == "clipboardOnly") {
     copyText(text);
   } else if(selectStatus == "searchOnly") {
-    runSearch(text, tabStatus);
+    runSearch(text, tabStatus); 
   }else if(selectStatus == "translateOnly") {
     Translator(text, tabStatus,languageStatus);
   } else if(selectStatus == "copySearchOnly") {
     copyText(text);
     runSearch(text, tabStatus);
-    Translator(text, tabStatus,languageStatus);
   } else if(selectStatus == "optionOnly"){
     showOptionBox(text);
+  } else if(selectStatus == "linkOnly"){
+    Link(text, tabStatus);
   }
 
   if (highlightStatus == "highlightText") {
@@ -98,7 +99,7 @@ function runSearch(t, tabStatus) {
 function Translator(t, tabStatus,lang) {
   var text = t.replace(/ /g,"%20");
   var newURL = "https://translate.google.com/?sl=auto&tl="+lang+"&text="+text+"&op=translate";
-  chrome.windows.create({'url': newURL, 'type': 'popup'}, function(window) {
+  chrome.windows.create({'url': newURL}, function(window) {
   });
 
   // if(tabStatus == "dontChangeTab"){
@@ -106,6 +107,10 @@ function Translator(t, tabStatus,lang) {
   // }else {
   //   chrome.tabs.create({url: newURL}, function(tab) {});
   // }
+}
+function Link(t, tabStatus) {
+  var text = t.replace(" ", "");
+  chrome.tabs.create({ url: text });
 }
 
 function showOptionBox(text) {
