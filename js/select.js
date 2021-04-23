@@ -53,7 +53,7 @@ SelecTron.Selector.mouseup = function(e){
               range.insertNode(newNode);
               // Create unique content for each popover
               var content = '<div style="cursor:pointer;color:white;text-align:center;"><img id="optionBoxCopy'+id+'"  src="'+chrome.extension.getURL('img/copy.png')+'"/> <img id="optionBoxSearch'+id+'" src="'+chrome.extension.getURL('img/link.png')+'"/> <img id="optionBoxTranslate'+id+'" src="'+chrome.extension.getURL('img/translate.png')+'"/><img id="optionBoxLink'+id+'" src="'+chrome.extension.getURL('img/link2.png')+'"/></div>';
-              $('#'+id).webuiPopover({placement:'auto',content: content, width: 118, trigger: "click"});
+              $('#'+id).webuiPopover({placement:'auto',content: content, trigger: "click"});
             }
 
             // Fire up the popover
