@@ -1,3 +1,5 @@
+[![wakatime](https://wakatime.com/badge/github/NoushadBug/SelecTron.svg)](https://wakatime.com/badge/github/NoushadBug/SelecTron)
+
 ![Image of SelecTron](https://github.com/NoushadBug/SelecTron/blob/master/img/icon128.png?raw=true)
 
 # SelecTron
